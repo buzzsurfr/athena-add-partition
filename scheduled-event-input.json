@@ -1,0 +1,6 @@
+{
+    "database": "Athena Database Name",
+    "table": "Athena Table Name",
+    "location": "S3 Location of logs (before partition)",
+    "query_result_location": "Where to store the Athena results (required)"
+}
