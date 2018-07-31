@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Add partition to Athena table based on CloudWatch Event.
+Parameters:
+  Database:
+    Type: String
+    Description: Database Name
+    MinLength: 1
+  Table:
+    Type: String
+    Description: Table Name
+    MinLength: 1
+  QueryResultLocation:
+    Type: String
+    Description: Where to store the results
+    MinLength: 6
+    AllowedPattern: "^s3://.*$"
+    ConstraintDescription: "must be a valid S3Uri (s3://bucketname/prefix/)"
+  Location:
+    Type: String
+    Description: Location of ELB Access Logs
+    MinLength: 6
+    AllowedPattern: "^s3://.*$"
+    ConstraintDescription: "must be a valid S3Uri (s3://bucketname/prefix/)"
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "Amazon Athena Configuration"
+        Parameters:
+          - Database
+          - Table
+          - QueryResultLocation
+      - Label:
+          default: "Amazon S3 Configuration"
+        Parameters:
+          - Location
+Resources:
+  AthenaAddPartition:
+    Type: 'AWS::Serverless::Function'
+    DependsOn:
+      - ExecutionRole
+    Properties:
+      Handler: athena-add-partition/lambda_function.py
+      Runtime: python3.6
+      CodeUri: s3://athenaaddpartition/lambda_function.zip
+      Description: ''
+      MemorySize: 128
+      Timeout: 5
+      Role: !GetAtt ExecutionRole.Arn
+      Events:
+        AddPartitionScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 day)
+            Input: !Join
+              - ''
+              - - '{"database":'
+                - !Ref Database
+                - ', "table":'
+                - !Ref Table
+                - ', "location":'
+                - !Ref Location
+                - ', "query_result_location":'
+                - !Ref QueryResultLocation
+                - '}'
+  ExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/AmazonAthenaFullAccess
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+      RoleName: AddAthenaPartitionExecutionRole
