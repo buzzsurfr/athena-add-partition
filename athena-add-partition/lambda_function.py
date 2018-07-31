@@ -12,12 +12,6 @@ athena = boto3.client('athena')
 
 def lambda_handler(event, context):
     # Get data from CloudWatch Scheduled Event
-    # event = {
-    #     "database": "Athena Database Name",
-    #     "table": "Athena Table Name",
-    #     "location": "S3 Location of logs (before partition)"
-    #     "query_result_location": "Where to store the Athena results (required)"
-    # }
     database = event['database']
     table = event['table']
     location = event['location']
@@ -25,10 +19,6 @@ def lambda_handler(event, context):
     dt = datetime.datetime.now()
 
     # Format Request
-    # Query:
-    #   ALTER TABLE elb_access_logs
-    #   ADD PARTITION (year=dt.year, month=dt.month, day=dt.day)
-    #   LOCATION location+str(dt.year)+"/"+str(dt.month)+"/"+str(dt.day)+"/"
     query_string = "ALTER TABLE " + table + " ADD PARTITION (year=\"" + dt.strftime('%Y') + "\", month=\"" + dt.strftime('%m') + "\", day=\"" + dt.strftime('%d') + "\") LOCATION \"" + location + dt.strftime('%Y') + "/" + dt.strftime('%m') + "/" + dt.strftime('%d') + "/\""
     logger.debug("query_string: " + query_string)
     query_execution_context = {
