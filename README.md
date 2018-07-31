@@ -5,7 +5,11 @@ Add partition to Athena table based on CloudWatch Event
 
 Following [Partitioning Data](https://docs.aws.amazon.com/athena/latest/ug/partitions.html#scenario-2-data-is-not-partitioned) from the [Amazon Athena documentation](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) for ELB Access Logs (Classic and Application) requires partitions to be created manually.
 
+## Architecture
+
 This template creates a Lambda function to add the partition and a CloudWatch Scheduled Event to invoke daily.
+
+![athena-add-partition Architecture](resources/architecture.png)
 
 ## Parameters
 
