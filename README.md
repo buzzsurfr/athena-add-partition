@@ -7,7 +7,7 @@ Following [Partitioning Data](https://docs.aws.amazon.com/athena/latest/ug/parti
 
 ## Architecture
 
-This template creates a Lambda function to add the partition and a CloudWatch Scheduled Event to invoke daily.
+This template creates a Lambda function to add the partition and a CloudWatch Scheduled Event. Logs are sent from the Load Balancer into a S3 bucket. Daily, the CloudWatch Scheduled Event will invoke the Lambda function to add a partition to the Athena table.
 
 ![athena-add-partition Architecture](resources/architecture.png)
 
