@@ -153,8 +153,7 @@
           "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
           "arn:aws:iam::aws:policy/AmazonAthenaFullAccess",
           "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
-        ],
-        "RoleName": "AddAthenaPartitionExecutionRole"
+        ]
       }
     }
   }
