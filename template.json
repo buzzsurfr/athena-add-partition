@@ -59,7 +59,17 @@
       ],
       "Properties": {
         "Code": {
-          "S3Bucket": "athenaaddpartition",
+          "S3Bucket": {
+            "Fn::Join": [
+              "",
+              [
+                "athena-add-partition-",
+                {
+                  "Ref": "AWS::Region"
+                }
+              ]
+            ]
+          },
           "S3Key": "lambda_function.zip"
         },
         "Handler": "athena-add-partition/lambda_function.lambda_handler",

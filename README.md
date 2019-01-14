@@ -101,7 +101,22 @@ LOCATION 's3://your_log_bucket/prefix/AWSLogs/AWS_account_ID/elasticloadbalancin
 ```
 
 ### Deploy using CloudFormation
-[![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athenaaddpartition/template.json)
+
+**NOTE:** Deployment for this template is supported for regions where Amazon Athena is available. For a complete list, see [Region Table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/).
+
+| Region | Deploy |
+| ------ | ------ |
+| US East (N. Virginia) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-us-east-1/template.json) |
+| US East (Ohio) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-us-east-2/template.json) |
+| US West (Oregon) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-us-west-2/template.json) |
+| Asia Pacific (Mumbai)) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-ap-south-1/template.json) |
+| Asia Pacific (Seoul) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-ap-northeast-2/template.json) |
+| Asia Pacific (Singapore) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-ap-southeast-1/template.json) |
+| Asia Pacific (Sydney) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-ap-southeast-2/template.json) |
+| Asia Pacific (Tokyo) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-ap-northeast-1/template.json) |
+| EU (Frankfurt) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-eu-central-1/template.json) |
+| EU (Ireland) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-eu-west-1/template.json) |
+| EU (London) | [![Deploy to AWS](resources/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-2/stacks/new?stackName=AthenaAddPartition&templateURL=https://s3.amazonaws.com/athena-add-partition-eu-west-2/template.json) |
 
 ### Deploy Manually
 
